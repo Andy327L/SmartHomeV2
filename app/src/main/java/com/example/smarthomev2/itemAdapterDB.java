@@ -10,14 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-//import static ismael.banihamed.my.a353.csun.edu.myfirstapp.R.array.devices;
-
 /**
  * Created by Abdu on 11/8/2017.
  */
 
 public class itemAdapterDB extends BaseAdapter {
-
     LayoutInflater mInflator;
     Map<String, Double> map;
     List<String> device;
@@ -35,6 +32,7 @@ public class itemAdapterDB extends BaseAdapter {
         return map.size();
     }
 
+    @Override
     public Object getItem(int position) {
         return device.get(position);
     }
@@ -47,16 +45,15 @@ public class itemAdapterDB extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = mInflator.inflate(R.layout.item_layout, null);
-        TextView devicesTextView = (TextView) v.findViewById(R.id.nameTextView);
-        TextView pfTextView = (TextView) v.findViewById(R.id.PFTextView);
+        TextView devicesTextView = (TextView) v.findViewById(R.id.devicesTextView);
+        TextView pfTextView = (TextView) v.findViewById(R.id.pfTextView);
         // TextView costTextView = (TextView) v.findViewById(R.id.costTextView);
 
-        devicesTextView.setText(device.get(position).toString());
+        devicesTextView.setText(device.get(position));
         pfTextView.setText(powerFactor.get(position).toString());
 
         //stays comented out until we can query data from database
-        //   setRowColor(v, pf.get(position));
-
+        setRowColor(v, powerFactor.get(position));
         return v;
     }
 

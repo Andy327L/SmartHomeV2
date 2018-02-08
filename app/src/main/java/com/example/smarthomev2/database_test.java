@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,18 +17,13 @@ import java.sql.Statement;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-//import static ismael.banihamed.my.a353.csun.edu.myfirstapp.R.id.progressTextView;
-
 public class database_test extends AppCompatActivity {
 
     itemAdapterDB itemAdapter;
     Context thisContext;
-    ListView myListView;
+    ListView DBListView;
     TextView progressTextView;
     Map<String, Double> devicesMap = new LinkedHashMap<String, Double>();
-
-    public database_test() throws SQLException {
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,18 +31,18 @@ public class database_test extends AppCompatActivity {
         setContentView(R.layout.activity_database_test);
 
         Resources res = getResources();
-        myListView = (ListView) findViewById(R.id.DBListView);
+        DBListView = (ListView) findViewById(R.id.DBListView);
         progressTextView = (TextView) findViewById(R.id.progressTextView);
         thisContext = this;
 
         progressTextView.setText("");
-        Button btn = (Button) findViewById(R.id.getDataButton);
-        btn.setOnClickListener(new View.OnClickListener() {
+        Button getDataButton = (Button) findViewById(R.id.getDataButton);
+        getDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GetData retrieveData = new GetData();
                 retrieveData.execute("");
-            }
+        }
         });
     }
 
@@ -134,7 +127,7 @@ public class database_test extends AppCompatActivity {
             if (devicesMap.size() > 0) {
 
                 itemAdapter = new itemAdapterDB(thisContext, devicesMap);
-                myListView.setAdapter(itemAdapter);
+                DBListView.setAdapter(itemAdapter);
             }
         }
     }
