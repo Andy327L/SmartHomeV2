@@ -2,7 +2,6 @@ package com.example.smarthomev2;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,19 +11,15 @@ import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-
-
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         //Button to  input user settings
-        Button settingsButton = (Button) findViewById(R.id.info);
-        settingsButton.setOnClickListener(new View.OnClickListener() {
+        Button customize = (Button) findViewById(R.id.customize);
+        customize.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent settingsIntent = new Intent(getApplicationContext(), settings.class);
                 startActivity(settingsIntent);
@@ -42,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         }); */
 
         //Button to go to DB list
-        Button startButton = (Button) findViewById(R.id.getStarted);
-        startButton.setOnClickListener(new View.OnClickListener() {
+        Button viewData = (Button) findViewById(R.id.viewData);
+        viewData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent startIntent = new Intent(getApplicationContext(), database_test.class);
